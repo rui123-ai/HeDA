@@ -5,6 +5,7 @@
     --color-deep-purple: #1a0029;
     --color-neon-pink: #ff1493;
     --color-neon-purple: #9d00ff;
+    --color-light-purple: #b794f4;
 }
 
 /* Reset e estilos base */
@@ -35,11 +36,12 @@ body {
 
 /* Header e Navegação */
 .main-header {
-    background: transparent;
+    background: rgba(26, 0, 41, 0.95);
     position: fixed;
     width: 100%;
     z-index: 100;
     padding: 1rem;
+    backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(157, 0, 255, 0.3);
 }
 
@@ -71,7 +73,23 @@ body {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: color 0.3s;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background: var(--color-neon-purple);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 .nav-links a:hover {
@@ -91,18 +109,15 @@ body {
 }
 
 .hero-logo {
-    display: flex;
-    gap: 10px;
+    max-width: 800px;
+    width: 90%;
     margin-bottom: 2rem;
 }
 
-.hero-logo span {
-    font-size: 4rem;
-    font-family: 'Special Elite', cursive;
-    color: #fff;
-    text-shadow: 0 0 15px var(--color-neon-purple);
-    transform: rotate(-5deg);
-    display: inline-block;
+.main-logo {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 20px var(--color-neon-purple));
 }
 
 .hero-text {
@@ -111,6 +126,7 @@ body {
     text-align: center;
     margin-top: 2rem;
     font-style: italic;
+    text-shadow: 0 0 10px var(--color-neon-pink);
 }
 
 /* Seção O Pacto */
@@ -190,37 +206,89 @@ body {
 
 /* Seção Lançamento */
 .release-section {
-    background: var(--color-black);
+    background: var(--color-deep-purple);
     padding: 5rem 2rem;
     text-align: center;
 }
 
 .release-title {
     color: var(--color-neon-pink);
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 20px var(--color-neon-pink);
 }
 
 .release-subtitle {
-    color: var(--color-neon-purple);
-    font-size: 1.5rem;
+    color: var(--color-light-purple);
+    font-size: 1.8rem;
     margin-bottom: 3rem;
     font-style: italic;
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    background: rgba(157, 0, 255, 0.1);
+    border: 1px solid rgba(157, 0, 255, 0.3);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(157, 0, 255, 0.2);
 }
 
 .song-title {
     color: #fff;
     font-size: 2rem;
-    margin: 2rem 0;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px var(--color-neon-purple);
 }
 
-.video-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: rgba(157, 0, 255, 0.1);
-    border: 1px solid rgba(157, 0, 255, 0.3);
-    padding: 1rem;
+.video-player {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
     border-radius: 10px;
+}
+
+.video-player iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.upcoming-release {
+    font-size: 1.5rem;
+    color: var(--color-light-purple);
+    margin-top: 2rem;
+}
+
+.release-badge {
+    display: inline-block;
+    background: var(--color-neon-pink);
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    margin-left: 1rem;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 20, 147, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 20, 147, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 20, 147, 0);
+    }
 }
 
 /* Animações */
