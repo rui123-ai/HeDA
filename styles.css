@@ -1,0 +1,369 @@
+/* Variáveis de cores */
+:root {
+    --color-black: #0a0a0a;
+    --color-crimson: #8b0000;
+    --color-purple: #2d0047;
+    --color-metallic: #2a2a2a;
+    --color-neon-green: #39ff14;
+    --color-smoke: rgba(45, 0, 71, 0.3);
+}
+
+/* Reset e estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-black);
+    color: #fff;
+    font-family: 'Special Elite', cursive;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Cursor personalizado */
+.custom-cursor {
+    width: 20px;
+    height: 20px;
+    background: url('assets/cursor.png') no-repeat center center;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+}
+
+/* Header e Navegação */
+.main-header {
+    background: linear-gradient(to bottom, var(--color-black), transparent);
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    padding: 1rem;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--color-neon-green);
+    text-shadow: 0 0 10px var(--color-neon-green);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--color-neon-green);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-neon-green);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Seção Hero */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: radial-gradient(circle at center, var(--color-purple), var(--color-black));
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+}
+
+.flaming-text {
+    font-family: 'Cinzel', serif;
+    font-size: 5rem;
+    color: var(--color-crimson);
+    text-shadow: 0 0 20px var(--color-crimson);
+    animation: flame 2s infinite;
+}
+
+.welcome-text {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    color: var(--color-neon-green);
+    text-shadow: 0 0 10px var(--color-neon-green);
+}
+
+/* Animações */
+@keyframes flame {
+    0%, 100% {
+        text-shadow: 0 0 20px var(--color-crimson);
+    }
+    50% {
+        text-shadow: 0 0 40px var(--color-crimson), 0 0 60px var(--color-crimson);
+    }
+}
+
+/* Seções gerais */
+section {
+    padding: 5rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 3rem;
+    color: var(--color-neon-green);
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+/* Seção Sobre */
+.about-section {
+    background: linear-gradient(45deg, var(--color-black), var(--color-purple));
+}
+
+.band-story {
+    max-width: 800px;
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 1.2rem;
+}
+
+.members {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.member-card {
+    background: rgba(45, 0, 71, 0.3);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.member-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Seção Discografia */
+.discography-section {
+    background: linear-gradient(-45deg, var(--color-black), var(--color-purple));
+}
+
+.albums-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.album-card {
+    background: rgba(45, 0, 71, 0.3);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.album-card:hover {
+    transform: scale(1.05);
+}
+
+.album-cover {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1rem;
+    background: var(--color-metallic);
+    border-radius: 5px;
+}
+
+/* Seção Galeria */
+.gallery-section {
+    background: linear-gradient(45deg, var(--color-purple), var(--color-black));
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.image-container {
+    position: relative;
+    padding-top: 100%;
+}
+
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Seção Merch */
+.merch-section {
+    background: linear-gradient(-45deg, var(--color-black), var(--color-purple));
+}
+
+.merch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.merch-item {
+    background: rgba(45, 0, 71, 0.3);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.merch-item:hover {
+    transform: translateY(-10px);
+}
+
+/* Seção Contato */
+.contact-section {
+    background: linear-gradient(45deg, var(--color-purple), var(--color-black));
+}
+
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.grimoire-form {
+    background: rgba(45, 0, 71, 0.3);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--color-neon-green);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--color-neon-green);
+    color: #fff;
+    border-radius: 5px;
+}
+
+.submit-btn {
+    background: var(--color-crimson);
+    color: #fff;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background: var(--color-purple);
+}
+
+.social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.social-link {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-link:hover {
+    color: var(--color-neon-green);
+}
+
+/* Footer */
+.main-footer {
+    background: var(--color-black);
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid var(--color-neon-green);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .flaming-text {
+        font-size: 3rem;
+    }
+} 
