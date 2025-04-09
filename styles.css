@@ -1,11 +1,10 @@
 /* Variáveis de cores */
 :root {
     --color-black: #0a0a0a;
-    --color-crimson: #8b0000;
     --color-purple: #2d0047;
-    --color-metallic: #2a2a2a;
-    --color-neon-green: #39ff14;
-    --color-smoke: rgba(45, 0, 71, 0.3);
+    --color-deep-purple: #1a0029;
+    --color-neon-pink: #ff1493;
+    --color-neon-purple: #9d00ff;
 }
 
 /* Reset e estilos base */
@@ -36,11 +35,12 @@ body {
 
 /* Header e Navegação */
 .main-header {
-    background: linear-gradient(to bottom, var(--color-black), transparent);
+    background: transparent;
     position: fixed;
     width: 100%;
     z-index: 100;
     padding: 1rem;
+    border-bottom: 1px solid rgba(157, 0, 255, 0.3);
 }
 
 .nav-container {
@@ -52,10 +52,11 @@ body {
 }
 
 .logo {
-    font-family: 'Cinzel', serif;
-    font-size: 2rem;
-    color: var(--color-neon-green);
-    text-shadow: 0 0 10px var(--color-neon-green);
+    font-family: 'Special Elite', cursive;
+    font-size: 1.5rem;
+    color: var(--color-neon-purple);
+    text-shadow: 0 0 10px var(--color-neon-purple);
+    letter-spacing: 2px;
 }
 
 .nav-links {
@@ -67,69 +68,173 @@ body {
 .nav-links a {
     color: #fff;
     text-decoration: none;
-    font-size: 1.1rem;
-    position: relative;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     transition: color 0.3s;
 }
 
 .nav-links a:hover {
-    color: var(--color-neon-green);
-}
-
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--color-neon-green);
-    transition: width 0.3s;
-}
-
-.nav-links a:hover::after {
-    width: 100%;
+    color: var(--color-neon-purple);
 }
 
 /* Seção Hero */
 .hero-section {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(to bottom, var(--color-deep-purple), var(--color-black));
     position: relative;
-    background: radial-gradient(circle at center, var(--color-purple), var(--color-black));
     overflow: hidden;
 }
 
-.hero-content {
+.hero-logo {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.hero-logo span {
+    font-size: 4rem;
+    font-family: 'Special Elite', cursive;
+    color: #fff;
+    text-shadow: 0 0 15px var(--color-neon-purple);
+    transform: rotate(-5deg);
+    display: inline-block;
+}
+
+.hero-text {
+    color: var(--color-neon-pink);
+    font-size: 1.2rem;
     text-align: center;
-    z-index: 2;
-}
-
-.flaming-text {
-    font-family: 'Cinzel', serif;
-    font-size: 5rem;
-    color: var(--color-crimson);
-    text-shadow: 0 0 20px var(--color-crimson);
-    animation: flame 2s infinite;
-}
-
-.welcome-text {
-    font-size: 1.5rem;
     margin-top: 2rem;
-    color: var(--color-neon-green);
-    text-shadow: 0 0 10px var(--color-neon-green);
+    font-style: italic;
+}
+
+/* Seção O Pacto */
+.about-section {
+    background: var(--color-deep-purple);
+    padding: 5rem 2rem;
+}
+
+.section-title {
+    color: var(--color-neon-purple);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    font-family: 'Special Elite', cursive;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.member-card {
+    background: rgba(157, 0, 255, 0.1);
+    border: 1px solid rgba(157, 0, 255, 0.3);
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.member-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+    border: 3px solid var(--color-neon-purple);
+    overflow: hidden;
+}
+
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.member-name {
+    color: var(--color-neon-purple);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.member-role {
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+.member-description {
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.member-quote {
+    margin-top: 2rem;
+    padding: 1rem;
+    border-left: 3px solid var(--color-neon-purple);
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Seção Lançamento */
+.release-section {
+    background: var(--color-black);
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.release-title {
+    color: var(--color-neon-pink);
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.release-subtitle {
+    color: var(--color-neon-purple);
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    font-style: italic;
+}
+
+.song-title {
+    color: #fff;
+    font-size: 2rem;
+    margin: 2rem 0;
+}
+
+.video-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(157, 0, 255, 0.1);
+    border: 1px solid rgba(157, 0, 255, 0.3);
+    padding: 1rem;
+    border-radius: 10px;
 }
 
 /* Animações */
-@keyframes flame {
+@keyframes glowPurple {
     0%, 100% {
-        text-shadow: 0 0 20px var(--color-crimson);
+        text-shadow: 0 0 10px var(--color-neon-purple);
     }
     50% {
-        text-shadow: 0 0 40px var(--color-crimson), 0 0 60px var(--color-crimson);
+        text-shadow: 0 0 20px var(--color-neon-purple), 0 0 30px var(--color-neon-purple);
     }
+}
+
+.glow-text {
+    animation: glowPurple 2s infinite;
 }
 
 /* Seções gerais */
@@ -147,38 +252,6 @@ h2 {
     color: var(--color-neon-green);
     margin-bottom: 3rem;
     text-align: center;
-}
-
-/* Seção Sobre */
-.about-section {
-    background: linear-gradient(45deg, var(--color-black), var(--color-purple));
-}
-
-.band-story {
-    max-width: 800px;
-    text-align: center;
-    margin-bottom: 4rem;
-    font-size: 1.2rem;
-}
-
-.members {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    width: 100%;
-    max-width: 1200px;
-}
-
-.member-card {
-    background: rgba(45, 0, 71, 0.3);
-    padding: 2rem;
-    border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-.member-card:hover {
-    transform: translateY(-10px);
 }
 
 /* Seção Discografia */
@@ -355,15 +428,19 @@ input, textarea {
 
 /* Responsividade */
 @media (max-width: 768px) {
+    .members-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-logo span {
+        font-size: 2.5rem;
+    }
+    
     .nav-links {
         display: none;
     }
     
     .contact-container {
         grid-template-columns: 1fr;
-    }
-    
-    .flaming-text {
-        font-size: 3rem;
     }
 } 

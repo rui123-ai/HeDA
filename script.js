@@ -6,6 +6,130 @@ document.addEventListener('DOMContentLoaded', () => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
+
+    // Animação do logo na hero section
+    const logoLetters = document.querySelectorAll('.hero-logo span');
+    logoLetters.forEach((letter, index) => {
+        letter.style.animationDelay = `${index * 0.1}s`;
+        letter.classList.add('glow-text');
+    });
+
+    // Efeito de hover nos cards dos membros
+    const memberCards = document.querySelectorAll('.member-card');
+    memberCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'scale(1.02)';
+            card.style.boxShadow = '0 0 20px rgba(157, 0, 255, 0.3)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'scale(1)';
+            card.style.boxShadow = 'none';
+        });
+    });
+
+    // Efeito de scroll suave para links da navegação
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Animação do header ao scroll
+    let lastScroll = 0;
+    const header = document.querySelector('.main-header');
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll <= 0) {
+            header.style.background = 'transparent';
+        } else {
+            header.style.background = 'rgba(26, 0, 41, 0.95)';
+        }
+
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            header.style.transform = 'translateY(0)';
+        }
+
+        lastScroll = currentScroll;
+    });
+
+    // Animação de entrada para os elementos quando aparecem na tela
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                if (entry.target.classList.contains('member-card')) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Observar cards dos membros
+    document.querySelectorAll('.member-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(50px)';
+        card.style.transition = 'all 0.6s ease-out';
+        observer.observe(card);
+    });
+
+    // Observar seções
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+
+    // Easter eggs e interações secretas
+    const secretCodes = {
+        'h3x': () => {
+            document.body.style.animation = 'glitch 0.3s infinite';
+            setTimeout(() => {
+                document.body.style.animation = '';
+            }, 1000);
+        },
+        'darkness': () => {
+            const elements = document.querySelectorAll('*');
+            elements.forEach(el => {
+                el.style.transition = 'all 0.5s ease';
+                el.style.filter = 'invert(1)';
+            });
+            setTimeout(() => {
+                elements.forEach(el => {
+                    el.style.filter = '';
+                });
+            }, 1000);
+        }
+    };
+
+    let keysPressed = '';
+    document.addEventListener('keydown', (e) => {
+        keysPressed += e.key.toLowerCase();
+        Object.keys(secretCodes).forEach(code => {
+            if (keysPressed.includes(code)) {
+                secretCodes[code]();
+                keysPressed = '';
+            }
+        });
+        setTimeout(() => {
+            keysPressed = '';
+        }, 1000);
+    });
 });
 
 // Background Music
@@ -31,27 +155,6 @@ function createSmokeEffect() {
         heroSection.appendChild(smoke);
     }
 }
-
-// Easter Eggs
-const easterEggs = {
-    'H3X': () => {
-        const audio = new Audio('assets/audio/secret.mp3');
-        audio.play();
-    },
-    '666': () => {
-        document.body.style.transform = 'rotate(180deg)';
-        setTimeout(() => {
-            document.body.style.transform = 'rotate(0deg)';
-        }, 1000);
-    }
-};
-
-document.addEventListener('keydown', (e) => {
-    const key = e.key.toUpperCase();
-    if (key === 'H' || key === '3' || key === 'X') {
-        easterEggs['H3X']();
-    }
-});
 
 // Galeria com efeito de espelho negro
 const galleryItems = document.querySelectorAll('.gallery-item');
@@ -94,23 +197,6 @@ contactForm.addEventListener('submit', (e) => {
         submitBtn.style.backgroundColor = 'var(--color-crimson)';
         contactForm.reset();
     }, 2000);
-});
-
-// Animações de scroll
-const observerOptions = {
-    threshold: 0.1
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
 });
 
 // Runas flutuantes
