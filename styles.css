@@ -106,18 +106,29 @@ body {
     background: linear-gradient(to bottom, var(--color-deep-purple), var(--color-black));
     position: relative;
     overflow: hidden;
+    gap: 2rem;
 }
 
 .hero-logo {
-    max-width: 800px;
+    max-width: 400px;
     width: 90%;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    animation: floatAnimation 3s ease-in-out infinite;
 }
 
 .main-logo {
     width: 100%;
     height: auto;
     filter: drop-shadow(0 0 20px var(--color-neon-purple));
+}
+
+@keyframes floatAnimation {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 .hero-text {
@@ -206,18 +217,28 @@ body {
 
 /* Seção Lançamento */
 .release-section {
-    background: var(--color-deep-purple);
-    padding: 5rem 2rem;
+    padding: 0 2rem 5rem 2rem;
     text-align: center;
+    background: transparent;
 }
 
 .release-title {
     color: var(--color-neon-pink);
-    font-size: 3.5rem;
+    font-size: 3rem;
     margin-bottom: 1rem;
     text-transform: uppercase;
     letter-spacing: 3px;
     text-shadow: 0 0 20px var(--color-neon-pink);
+    animation: glowText 2s infinite;
+}
+
+@keyframes glowText {
+    0%, 100% {
+        text-shadow: 0 0 20px var(--color-neon-pink);
+    }
+    50% {
+        text-shadow: 0 0 30px var(--color-neon-pink), 0 0 40px var(--color-neon-pink);
+    }
 }
 
 .release-subtitle {
